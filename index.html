@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Agende seu horário na Barbearia Black Gold. Escolha o serviço, barbeiro e horário disponível de forma rápida e fácil." />
+  <meta name="keywords" content="barbearia, agendamento, corte de cabelo, barba, horário, reserva" />
+  <meta name="author" content="Black Gold Barbearia" />
+  <meta name="robots" content="index, follow" />
+  <link rel="stylesheet" href="CSS/styles.css">
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Agendamento — Black Gold Barbearia" />
+  <meta property="og:description" content="Reserve seu horário online. Atendimento de qualidade, na hora certa." />
+  <meta property="og:locale" content="pt_BR" />
+
+  <link rel="canonical" href="https://blackgold.com.br/agendamento" />
+
+  <title>Agendamento de Horário — Black Gold Barbearia</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <a class="skip-link" href="#formulario">Pular para o formulário</a>
+
+  <main>
+    <article class="card" aria-label="Formulário de agendamento da barbearia">
+
+      <header class="card__header">
+        <div class="logo" aria-hidden="true">
+          <div class="logo__icon">✂</div>
+          <span class="logo__name">Black Gold</span>
+        </div>
+        <h1 class="card__title">Reserve seu<br>horário</h1>
+        <p class="card__subtitle">Preencha os dados abaixo e confirme seu agendamento em segundos.</p>
+      </header>
+
+      <div class="card__body">
+        <form
+          id="formulario"
+          action="/agendamento"
+          method="POST"
+          novalidate
+          aria-label="Agendamento de corte e barba"
+        >
+          <fieldset>
+            <legend>Seus Dados</legend>
+
+            <div class="field-row field-row--2">
+              <div class="field">
+                <label for="nome">Nome <abbr title="obrigatório" aria-label="obrigatório">*</abbr></label>
+                <input
+                  type="text"
+                  id="nome"
+                  name="nome"
+                  placeholder="João Silva"
+                  autocomplete="given-name"
+                  required
+                  minlength="2"
+                  aria-required="true"
+                />
+              </div>
+
+              <div class="field">
+                <label for="sobrenome">Sobrenome</label>
+                <input
+                  type="text"
+                  id="sobrenome"
+                  name="sobrenome"
+                  placeholder="Silva"
+                  autocomplete="family-name"
+                />
+              </div>
+            </div>
+
+            <div class="field" style="margin-top:1rem;">
+              <label for="telefone">Telefone <abbr title="obrigatório" aria-label="obrigatório">*</abbr></label>
+              <input
+                type="tel"
+                id="telefone"
+                name="telefone"
+                placeholder="(86) 99999-9999"
+                autocomplete="tel"
+                required
+                pattern="[\d\s\(\)\-\+]{8,20}"
+                aria-required="true"
+                aria-describedby="telefone-hint"
+                style="width:11rem;"
+              />
+              <span id="telefone-hint" style="font-size:.78rem;color:var(--cor-texto-escuro);">Com DDD. Ex: (86) 99123-4567</span>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Serviço</legend>
+
+            <div class="field-row field-row--2">
+              <div class="field">
+                <label for="servico">Tipo de serviço <abbr title="obrigatório" aria-label="obrigatório">*</abbr></label>
+                <div class="select-wrap">
+                  <select id="servico" name="servico" required aria-required="true">
+                    <option value="" disabled selected>Selecione…</option>
+                    <optgroup label="Cabelo">
+                      <option value="corte-simples">Corte simples</option>
+                      <option value="corte-degradê">Corte degradê</option>
+                      <option value="corte-social">Corte social</option>
+                    </optgroup>
+                    <optgroup label="Barba">
+                      <option value="barba-completa">Barba completa</option>
+                      <option value="acabamento-barba">Acabamento de barba</option>
+                    </optgroup>
+                    <optgroup label="Combos">
+                      <option value="combo-cabelo-barba">Cabelo + Barba</option>
+                      <option value="combo-vip">Combo VIP (lavagem + corte + barba)</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="barbeiro">Barbeiro <abbr title="obrigatório" aria-label="obrigatório">*</abbr></label>
+                <div class="select-wrap">
+                  <select id="barbeiro" name="barbeiro" required aria-required="true">
+                    <option value="" disabled selected>Selecione…</option>
+                    <option value="rodrigo">Rodrigo Alves</option>
+                    <option value="marcos">Marcos Oliveira</option>
+                    <option value="felipe">Felipe Santos</option>
+                    <option value="qualquer">Qualquer disponível</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Data &amp; Horário</legend>
+
+            <div class="field-row field-row--2">
+              <div class="field">
+                <label for="data">Data <abbr title="obrigatório" aria-label="obrigatório">*</abbr></label>
+                <input
+                  type="date"
+                  id="data"
+                  name="data"
+                  required
+                  aria-required="true"
+                  min=""
+                />
+              </div>
+
+              <div class="field" aria-hidden="true" style="justify-content:flex-end;padding-bottom:.15rem;"></div>
+            </div>
+
+            <div class="field" style="margin-top:1.25rem;">
+              <label as="p" id="vagas-label">Vagas disponíveis <abbr title="obrigatório" aria-label="obrigatório">*</abbr></label>
+
+              <div
+                class="slots-grid"
+                role="radiogroup"
+                aria-labelledby="vagas-label"
+                aria-required="true"
+              >
+                <div class="slot">
+                  <input type="radio" name="horario" id="h0900" value="09:00" required />
+                  <label for="h0900">09:00</label>
+                </div>
+                <div class="slot">
+                  <input type="radio" name="horario" id="h0930" value="09:30" />
+                  <label for="h0930">09:30</label>
+                </div>
+                <div class="slot slot--unavailable">
+                  <input type="radio" name="horario" id="h1000" value="10:00" disabled aria-label="10:00 — indisponível" />
+                  <label for="h1000" aria-hidden="true">10:00</label>
+                </div>
+                <div class="slot slot--unavailable">
+                  <input type="radio" name="horario" id="h1030" value="10:30" disabled aria-label="10:30 — indisponível" />
+                  <label for="h1030" aria-hidden="true">10:30</label>
+                </div>
+                <div class="slot">
+                  <input type="radio" name="horario" id="h1100" value="11:00" />
+                  <label for="h1100">11:00</label>
+                </div>
+                <div class="slot">
+                  <input type="radio" name="horario" id="h1130" value="11:30" />
+                  <label for="h1130">11:30</label>
+                </div>
+                <div class="slot slot--unavailable">
+                  <input type="radio" name="horario" id="h1200" value="12:00" disabled aria-label="12:00 — indisponível" />
+                  <label for="h1200" aria-hidden="true">12:00</label>
+                </div>
+                <div class="slot">
+                  <input type="radio" name="horario" id="h1400" value="14:00" />
+                  <label for="h1400">14:00</label>
+                </div>
+                <div class="slot">
+                  <input type="radio" name="horario" id="h1430" value="14:30" />
+                  <label for="h1430">14:30</label>
+                </div>
+                <div class="slot">
+                  <input type="radio" name="horario" id="h1500" value="15:00" />
+                  <label for="h1500">15:00</label>
+                </div>
+                <div class="slot slot--unavailable">
+                  <input type="radio" name="horario" id="h1530" value="15:30" disabled aria-label="15:30 — indisponível" />
+                  <label for="h1530" aria-hidden="true">15:30</label>
+                </div>
+                <div class="slot">
+                  <input type="radio" name="horario" id="h1600" value="16:00" />
+                  <label for="h1600">16:00</label>
+                </div>
+                <div class="slot">
+                  <input type="radio" name="horario" id="h1630" value="16:30" />
+                  <label for="h1630">16:30</label>
+                </div>
+                <div class="slot">
+                  <input type="radio" name="horario" id="h1700" value="17:00" />
+                  <label for="h1700">17:00</label>
+                </div>
+                <div class="slot slot--unavailable">
+                  <input type="radio" name="horario" id="h1730" value="17:30" disabled aria-label="17:30 — indisponível" />
+                  <label for="h1730" aria-hidden="true">17:30</label>
+                </div>
+                <div class="slot">
+                  <input type="radio" name="horario" id="h1800" value="18:00" />
+                  <label for="h1800">18:00</label>
+                </div>
+              </div>
+
+              <div class="slots-legend" aria-label="Legenda das vagas">
+                <span><span class="dot dot--avail" aria-hidden="true"></span>Disponível</span>
+                <span><span class="dot dot--sel"   aria-hidden="true"></span>Selecionado</span>
+                <span><span class="dot dot--off"   aria-hidden="true"></span>Indisponível</span>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Observações</legend>
+
+            <div class="field">
+              <label for="obs">Algum detalhe adicional?</label>
+              <textarea
+                id="obs"
+                name="observacoes"
+                placeholder="Ex.: quero o degradê bem baixo, barba com navalhete…"
+                maxlength="400"
+                aria-describedby="obs-count"
+              ></textarea>
+              <span id="obs-count" style="font-size:.78rem;color:var(--cor-texto-escuro);">Máximo 400 caracteres.</span>
+            </div>
+
+            <div class="check-field" style="margin-top:1.25rem;">
+              <input
+                type="checkbox"
+                id="termos"
+                name="termos"
+                required
+                aria-required="true"
+              />
+              <label for="termos">
+                Li e concordo com a
+                <a href="/politica-cancelamento" target="_blank" rel="noopener">política de cancelamento</a>
+                e os
+                <a href="/termos" target="_blank" rel="noopener">termos de uso</a>.
+              </label>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="btn-submit">
+            Confirmar Agendamento
+          </button>
+
+          <p class="form-note" role="note">
+            Você receberá uma confirmação via WhatsApp ou e-mail em até 10 minutos.
+          </p>
+
+        </form>
+      </div>
+
+    </article>
+  </main>
+</body>
+</html>
